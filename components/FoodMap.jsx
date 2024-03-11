@@ -8,7 +8,7 @@ const FoodMap = (props) => {
     useEffect(() => {
       // Load Google Maps API script
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC0KAWWPur5EZy72zphYs77eeAe4mM_8Ac&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
       script.async = true;
       document.head.appendChild(script);
   
