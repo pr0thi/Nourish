@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Gmaps from './Gmaps';
 import MapComponent from './MapComponent';
 import SearchLocationInput from './SearchLocationInput';
 const Form = () => {
@@ -7,7 +6,7 @@ const Form = () => {
 const [formData, setFormData] = useState({
     username: '',
     email: '',
-    occupation: 'other',
+    occupation: 'pkgfood',
     gender: '',
     languages: [''],
   })
@@ -18,10 +17,6 @@ const [formData, setFormData] = useState({
     lng: 77.1025,
   });
  
-    
-
-
-
   const onChangeHandler = (event) => {
 
     console.log(event)
@@ -49,6 +44,12 @@ const [formData, setFormData] = useState({
     event.preventDefault()
     console.log(formData)
   }
+
+  const callfunction = () =>{
+    return console.log(formData);
+  }
+
+
   return (
     <div className="App">
       <form onSubmit={onSubmitHandler}>
@@ -67,14 +68,14 @@ const [formData, setFormData] = useState({
         <div className="form-group">
           <label htmlFor="occupation" className="form-label">Category</label>
           <select className="form-select" name="occupation" onChange={onChangeHandler} value={formData.occupation}>
-          <option value="other">Cooked Meal</option>  
-          <option value="student">Raw Materials</option>
-            <option value="employee">Packaged Food</option>
+          <option value="cookedmeal">Cooked Meal</option>  
+          <option value="rawmaterial">Raw Materials</option>
+            <option value="pkgfood">Packaged Food</option>
             
           </select>
           
         </div>
-        {formData.occupation=="other" ? <div className="form-group">
+        {formData.occupation=="cookedmeal" ? <div className="form-group">
         <label htmlFor="gender" className="form-label">Available</label>
         <div>
           <div>
@@ -99,7 +100,7 @@ const [formData, setFormData] = useState({
         </div>
       </div> : <div></div>}
 
-      {formData.occupation=="student" ? <div className="form-group">
+      {formData.occupation=="rawmaterial" ? <div className="form-group">
         <label htmlFor="gender" className="form-label">Available</label>
         <div>
           <div>
@@ -128,7 +129,7 @@ const [formData, setFormData] = useState({
         </div>
       </div> : <div></div>}
       
-      {formData.occupation=="employee" ? <div className="form-group">
+      {formData.occupation=="pkgfood" ? <div className="form-group">
         <label htmlFor="gender" className="form-label">Available</label>
         <div>
           <div>
@@ -162,11 +163,12 @@ const [formData, setFormData] = useState({
       <MapComponent selectedLocation={selectedLocation} />
     </div>
 
-
+      
 
 
         <div className="form-group">
-          <button className="btn" type="submit" >Submit</button>
+          <button className="btn" type="submit" onClick={callfunction} >Submit</button>
+          {console.log(formData)}
         </div>
       </form>
     </div>
